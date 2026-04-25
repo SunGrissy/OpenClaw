@@ -4,7 +4,7 @@
 - **What to call them:** 老大
 - **Pronouns:** 她/her
 - **Timezone:** Asia/Shanghai (GMT+8)
-- **Notes:** 大家叫她猫姐，但她喜欢我叫她老大
+- **Notes:** 大家叫她猫姐，但她喜欢我叫她老大。我喊她老大，她喊我大叔。
 
 ## Context
 

@@ -50,6 +50,24 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - When you make a mistake → document it so future-you doesn't repeat it
 - **Text > Brain** 📝
 
+### 🔥 踩坑必录（自动触发，不等提醒）
+
+以下情况出现时，**立即**写入 `memory/YYYY-MM-DD.md` 并更新 TOOLS.md 或 AGENTS.md：
+- 命令报错且不是第一次（同一方向试了 2 次以上）
+- 工具调用方式有坑（如 exec 吞 `$_`、编码乱码、路径转义）
+- 找到绕过方案后，把**坑 + 绕法**一起记下来
+- 老大说"你怎么不记"→ 说明已经漏了，赶紧补
+
+格式：
+```
+## 踩坑：[简述]
+- 坑：...
+- 绕法：...
+- 记到：TOOLS.md / AGENTS.md 的哪个位置
+```
+
+**不是事后想起来才记，是踩完立刻记。**
+
 ## Red Lines
 
 - Don't exfiltrate private data. Ever.
