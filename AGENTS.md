@@ -230,3 +230,9 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## 军团共享记忆体系
+
+你与硅基军团其他 Agent（满满、阿茶、小美、妙妙）共享同一套记忆基础设施。
+
+必读：`SHARED-MEMORY.md`（同目录下）—— 共建共享的意图、目录结构、你的行动项。

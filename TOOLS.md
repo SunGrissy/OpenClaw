@@ -68,4 +68,19 @@ Get-Process | Where-Object { $_.Name -eq 'python' }
 
 ---
 
+## Hermes 启动注意
+- 必须设 `PYTHONIOENCODING=utf-8`，否则 hermes.exe 输出 emoji 时 GBK 编码崩溃（`UnicodeEncodeError: 'gbk' codec can't encode character`）
+- 启动脚本：`D:\OpenClaw\scripts\start_hermes.bat`（已包含编码设置）
+- 4 个实例：满满(D:\hermes) / 阿茶(D:\hermes\acha) / 小美(D:\hermes\xiaomei) / 妙妙(D:\hermes\miaomiao)
+
+---
+
+## 钉钉发图
+- 格式：`![描述](MEDIA:D:/path/to/image.jpg)` 注意用**正斜杠**
+- ❌ 反斜杠 `D:\path\image.png` → 空图/叉
+- ✅ 正斜杠 `D:/path/image.jpg` → 成功
+- PNG 大图也能发，但压缩成 JPG 更稳
+
+---
+
 Add whatever helps you do your job. This is your cheat sheet.
