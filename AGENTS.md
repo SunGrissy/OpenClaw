@@ -236,3 +236,5 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 你与硅基军团其他 Agent（满满、阿茶、小美、妙妙）共享同一套记忆基础设施。
 
 必读：`SHARED-MEMORY.md`（同目录下）—— 共建共享的意图、目录结构、你的行动项。
+
+**代码修改标记**：修改非自身工作区代码时，必须加 `[AgentXia Task]` 标记。详见 `legion-charter.md` §7.1。

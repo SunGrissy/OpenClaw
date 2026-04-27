@@ -26,9 +26,25 @@
 - hub/YYYY-MM-DD.md：每日汇聚报告（满满凌晨2:00生成）
 - knowledge/xiaxia-YYYY-MM-DD.md：我的发现写入处（§分隔）
 - paused-tasks.md：明确搁置事项
-- 军团成员：满满(总管)、阿茶(PM Advisor)、小美(设计Advisor)、妙妙(HR/关怀)
+- 军团成员：满满(总管)、阿茶(PM Advisor)、小美(设计Advisor)、妙妙(HR/关怀)、小马(运维)
 - 检查点：[x] legion-charter 已读取/摘录、[x] 第一份 knowledge 已写入、[x] 有方式跟踪 hub 报告
 
 ## 重要事件
 - 2026-04-23：第一次上线，和老大在钉钉认识了
-- 2026-04-24 待办：提醒老大登录 Claude Code（claude login，用 claude.ai 账号）
+- 2026-04-26：运维小马上线（OpenClaw2/D:/OpenClaw2/端口18790/deepseek-v4-flash），加入硅基军团
+- 2026-04-26：妙妙配了 DeepSeek API
+- 2026-04-26：老大要求所有列表必须编号，写入共享规则
+- 2026-04-27：军团代码修改标记规范 §7.1 写入 legion-charter.md（Agent代号：Xia/Man/Cha/Mei/Miao/Ma）
+- 2026-04-27：修复群聊引用消息读取——钉钉 Stream API 将 isReplyMsg/repliedMsg 放在 text.extensions 里而非顶层，Hermes+OpenClaw 两端已改，妙妙+小马验证通过
+
+## 钉钉引用消息结构（重要）
+- 群聊+私聊：isReplyMsg/repliedMsg 在 `text.extensions` 里，不在 `text` 顶层
+- `message.extensions.originalMsgId` 也含被引用消息 ID
+- 代码必须同时检查 `text.isReplyMsg`（旧结构）和 `text.extensions.isReplyMsg`（新结构）
+
+## 待办
+- 妙妙需重启才能用 DeepSeek
+- 妙妙 Hermes 已改代码支持 DeepSeek V4 thinking 模式，待切模型后验证
+- 小马 Windows 计划任务需管理员权限注册（开机自启）
+- 小马钉钉 Stream 约30秒 Disconnecting→reconnect 待查
+- 今晚 21:55 有一次性关机任务
