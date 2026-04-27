@@ -1,7 +1,8 @@
 # HEARTBEAT.md
 
 ## 定时任务
-- [ ] 每晚 22:30 git 巡检：检查 D:\MyAgents / D:\AgentsHub\MyAgents / D:\OpenClaw\workspace 的修改状态，有变更则整理分类报告老大
+- [x] 每晚 22:30 git 巡检：检查 D:\MyAgents / D:\AgentsHub\MyAgents / D:\OpenClaw\workspace 的修改状态，有变更则整理分类报告老大
+  - ✅ 2026-04-27 21:51 已完成
 - [x] 每30分钟 Hermes 进程巡检：检查满满/阿茶/小美/妙妙4个进程，异常通知老大
   - 脚本：D:\OpenClaw\scripts\hermes-healthcheck.ps1
   - cron job: hermes-healthcheck (49fe70b2-9c4d-43d3-9e24-cb9f8070a391)
@@ -23,9 +24,8 @@
   - 读：D:/MyAgents/shared-memory/hub/YYYY-MM-DD.md
   - 写：D:/MyAgents/shared-memory/knowledge/xiaxia-YYYY-MM-DD.md（有值得共享的发现时写）
   - 完整框架：D:/MyAgents/shared-memory/legion-charter.md
-  - ✅ 2026-04-26 已读 hub 报告，今天已有6条 knowledge 写入
 
 ## 心跳复盘
 - [x] 检查当天 `memory/YYYY-MM-DD.md` 有没有踩坑记录遗漏 — 今天暂无记忆文件
 - [x] TOOLS.md 里的陷阱清单是否需要更新 — 不需要
-- [x] 今日是否有值得写入共享 knowledge/ 的发现 — 今天暂无新发现，已有6条由之前写入
+- [ ] 今日是否有值得写入共享 knowledge/ 的发现
