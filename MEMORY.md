@@ -36,6 +36,7 @@
 - 2026-04-26：老大要求所有列表必须编号，写入共享规则
 - 2026-04-27：军团代码修改标记规范 §7.1 写入 legion-charter.md（Agent代号：Xia/Man/Cha/Mei/Miao/Ma）
 - 2026-04-27：修复群聊引用消息读取——钉钉 Stream API 将 isReplyMsg/repliedMsg 放在 text.extensions 里而非顶层，Hermes+OpenClaw 两端已改，妙妙+小马验证通过
+- 2026-04-28：写小马专用启动脚本 start_xiaoma.bat；PowerShell && 坑再次翻车被老大点名
 
 ## 钉钉引用消息结构（重要）
 - 群聊+私聊：isReplyMsg/repliedMsg 在 `text.extensions` 里，不在 `text` 顶层

@@ -97,8 +97,8 @@ dws calendar event list --start "YYYY-MM-DDT00:00:00+08:00" --end "YYYY-MM-DDT23
 | 【其他】 | 不属于以上的（北极星小组、跨部门沟通等） |
 
 每个标签下的条目：
-- 【标签】独占一行，标签下的条目各自编号
-- 标签之间空一行
+- 标题格式：`═══【标签】═══`（全角等号包裹，视觉突出）
+- 标签之间**两个空行**（`\r\n\r\n\r\n`），视觉分割
 - **结论/产出驱动**，不写流水账
 - 一句话说清：做了什么 → 产出/结论是什么
 - 有会议写会议名+关键结论，不写"开了个会"
@@ -114,23 +114,23 @@ dws calendar event list --start "YYYY-MM-DDT00:00:00+08:00" --end "YYYY-MM-DDT23
 
 **今日完成工作：**
 ```
-【管线】
+═══【管线】═══
 1. PMO 脉搏会，对齐端午版本内容量，启动容量拆解
 2. 同步五月投放资源前置准备需求
 
-【产品】
+═══【产品】═══
 1. 五一版本 boss 阶段反馈 / 五月中每日打 boss 活动方案审核
 
-【投放】
+═══【投放】═══
 1. 直播运营面试交流
 
-【组建】
+═══【组建】═══
 1. 黄梓琪·数据分析（复试，校招）— 备选
 
-【AI实用】
+═══【AI实用】═══
 1. Hermes 多 profile 架构梳理 / PmSystem 权限分级落地
 
-【其他】
+═══【其他】═══
 1. 北极星小组阶段沟通
 ```
 
@@ -165,22 +165,57 @@ dws calendar event list --start "YYYY-MM-DDT00:00:00+08:00" --end "YYYY-MM-DDT23
 
 ## 提交方法
 
-使用 Python subprocess 调用 dws（避免 PowerShell 转义问题）：
+使用 Python subprocess 调用 dws（避免 PowerShell 转义问题）。
+
+**contents 字段 key 必须与模板字段名完全一致：**
+- `今日完成工作`（sort=0）
+- `待完成工作`（sort=3）
+- `需协助工作`（sort=4）
 
 ```python
 import subprocess, json
 
-contents = [...]  # 按模板格式
+contents = [
+    {
+        "content": "【管线】\r\n1. xxx\r\n\r\n【产品】\r\n1. xxx",
+        "sort": "0",
+        "key": "今日完成工作",
+        "contentType": "markdown",
+        "type": "1"
+    },
+    {
+        "content": "",
+        "sort": "3",
+        "key": "待完成工作",
+        "contentType": "markdown",
+        "type": "1"
+    },
+    {
+        "content": "",
+        "sort": "4",
+        "key": "需协助工作",
+        "contentType": "markdown",
+        "type": "1"
+    }
+]
 contents_json = json.dumps(contents, ensure_ascii=False)
 
 cmd = [
     "dws", "report", "create",
     "--template-id", "153363afc40e225078a5a254ded82265",
     "--contents", contents_json,
-    "--format", "json"
+    "--to-user-ids", "0426535900663699,06190305261218848,282615375724254293,083544684131913450,03076540256050,122009354035315553,253240393526384538,124400492823788983,131262131635970380",
+    "--format", "json",
+    "--yes"
+    # 注意：不传 --to-chat，不勾选「通过聊天发送给接收人」
 ]
 result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
+print(result.stdout)
 ```
+
+**Pitfall 警示：**
+- `key` 写成 `今日完成` 等简称会导致 `PARAM_ERROR`，必须与模板字段名完全一致。
+- 可用 `dws report template detail --name 日报 --yes` 验证字段名称。
 
 ## 注意事项
 
@@ -190,8 +225,42 @@ result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
 - 敏感信息（密码、密钥、内部 IP）不入日报
 - PowerShell 下 dws 传 JSON 参数会转义出错，**一律用 Python subprocess**
 
+## 抄送名单（to-user-ids）
+
+日报提交时固定抄送以下 9 人，通过 `--to-user-ids` 传入，逗号分隔：
+
+```
+0426535900663699,06190305261218848,282615375724254293,083544684131913450,03076540256050,122009354035315553,253240393526384538,124400492823788983,131262131635970380
+```
+
+| 姓名 | userId |
+|------|--------|
+| 侯涌 | 0426535900663699 |
+| 陈晨 | 06190305261218848 |
+| 张梦君 | 282615375724254293 |
+| 纪小可 | 083544684131913450 |
+| 李建良 | 03076540256050 |
+| 许燕飞 | 122009354035315553 |
+| 杨玉涛 | 253240393526384538 |
+| 崔正钦 | 124400492823788983 |
+| 车君怡 | 131262131635970380 |
+
+完整 JSON 备份：`D:\hermes\skills\dingtalk\dws-dingtalk-cli\references\daily-report-cc-list.json`
+
+完整提交命令示例：
+```python
+cmd = [
+    "dws", "report", "create",
+    "--template-id", "153363afc40e225078a5a254ded82265",
+    "--contents", contents_json,
+    "--to-chat",
+    "--to-user-ids", "0426535900663699,06190305261218848,282615375724254293,083544684131913450,03076540256050,122009354035315553,253240393526384538,124400492823788983,131262131635970380",
+    "--format", "json"
+]
+```
+
 ## 待办
 
 - [ ] 老大提供钉钉消息关注名单（周一）→ 写入 `daily_report_watchlist.json`
 - [ ] 消息巡检拆为独立 SKILL/cron（`inbox-triage`），每天 10:00/14:00/18:00 运行
-- [ ] 日报提交时需选抄2人员——确认抄2名单和 dws 参数写法（`--to-user-ids`）
+- [x] 日报提交时需选抄送人员——确认名单和 dws 参数写法（`--to-user-ids`）✅ 2026-04-28
