@@ -1,5 +1,0 @@
-[
-  {"key":"今日完成工作","sort":"0","content":"【AI实用】Hermes 硅基军团排查启动（满满/阿茶/小美/妙妙），修复小美 401 鉴权失败 + process() 参数类型 bug\r\n【AI实用】保安虾叔新身份配置（IDENTITY/SOUL/MEMORY），建立称呼体系，确认总管满满=Director 命名\r\n【AI实用】Playwright 自动化登录 PmSystem（OIDC/统一认证），导出完整备份 pm_data_full_2026-04-25.json\r\n【AI实用】钉钉 Connector 发图踩坑修复（MEDIA 路径须用正斜杠），记录到军团共享知识库\r\n【管线】14:00 周运营数据会议（昆仑山会议室，崔忠仁/杨琳）","contentType":"markdown","type":"1"},
-  {"key":"待完成工作","sort":"3","content":"【AI实用】Hermes 主 profile SOUL.md 正名为总管满满（当前是默认技术铁律模板）\r\n【AI实用】检查阿茶/妙妙是否也存在 process() 参数类型 bug\r\n【AI实用】PmSystem 数据备份定期自动化（当前手动 Playwright 登录导出）","contentType":"markdown","type":"1"},
-  {"key":"需协助工作","sort":"4","content":"1. PmSystem OIDC 登录需扫码授权，无法全自动——需确认是否有 token 自动登录方案","contentType":"markdown","type":"1"}
-]
