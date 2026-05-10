@@ -102,6 +102,15 @@ Get-Process | Where-Object { $_.Name -eq 'python' }
 - ✅ 正斜杠 `D:/path/image.jpg` → 成功
 - PNG 大图也能发，但压缩成 JPG 更稳
 
+### OpenClaw dingtalk-connector 发图完整流程
+1. Agent 回复中写 `MEDIA:D:/path/to/file.jpg`
+2. OpenClaw gateway 检测到 `MEDIA:` 标记 → 提取本地路径（支持 `file://` / `MEDIA:` / `attachment://` 三种前缀）
+3. `uploadMediaToDingTalk()`: 读取本地文件 → FormData 上传到钉钉 oapi `/media/upload` → 拿到 `media_id`
+4. 拿 `media_id` 调 `sendProactive()` 发图片消息（msgType=image, msgKey=sampleImageMsg, photoURL=mediaId）
+5. 所需 token：`oapiToken`（旧版 oapi access_token，通过 client_id/client_secret 获取）
+6. 大小限制：image 10MB / voice 2MB / video+file 20MB
+7. 源码位置：`D:\OpenClaw\extensions\dingtalk-connector\dist\media-CJ4aUMke.mjs` + `runtime-D3BtNVHz.mjs`
+
 ---
 
 ## OpenClaw DeepSeek 插件 vs 自定义 Provider

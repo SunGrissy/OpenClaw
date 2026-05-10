@@ -136,6 +136,80 @@ Reactions are lightweight social signals. Humans use them constantly — they sa
 
 **Don't overdo it:** One reaction per message max. Pick the one that fits best.
 
+## ⚡ Windows Shell 避坑（必读！）
+
+**本机 Windows，OpenClaw exec 默认跑在 PowerShell 下。**
+
+### 头号杀手：`&&` 和 `||`
+
+PowerShell 里 `&&` 不是逻辑与，而是**后台运算符 `&` + 语法错误**。
+```
+# ❌ 在 exec 里这么写必定报错
+cmd /c "git status && git push"
+ping -n 5 127.0.0.1 && netstat -ano | findstr :18789
+
+# ✅ 正确做法：分号或分步
+py D:\workspace\script.py; netstat -ano | findstr :18789
+# 或者写 bat 文件
+```
+
+### 二号杀手：`$_` 被吞
+
+`Where-Object { $_.Status -eq 'Running' }` → `$_` 被 exec 拦截，报 `CommandNotFoundException`。
+```
+# ❌ 不要用
+Get-Process | Where-Object { $_.CPU -gt 10 }
+
+# ✅ 用 CMD 原生工具替代
+tasklist /V | findstr "node"
+netstat -ano | findstr "18789"
+```
+
+### 三号杀手：编码乱码
+
+PowerShell pipeline 输出默认 GBK，Python 读中文/emoji 必崩。
+```
+# ❌ py -c 内联执行含中文/emoji 的 Python 代码
+# ✅ 写 .py 文件然后 py xxx.py
+```
+
+### 黄金法则
+
+| 场景 | 做法 |
+|------|------|
+| 简单命令（tasklist, findstr, netstat） | 直接 exec |
+| 涉及 `&&` `||` `$_` `$?` | 写 bat 文件 + exec 跑 bat |
+| 多步流程（git add → commit → push） | 写 bat 文件 |
+| Python 含中文/emoji | 写 .py 文件 + exec 跑 |
+| 路径拼接、正则查找 | 写 .py 文件 |
+
+**踩过就别再踩第二次。**
+
+## ⏱ 任务链刹车规则
+
+### 防无限循环
+
+**连续 exec 超过 5 次还没回复用户 → 立刻刹车。**
+
+```
+# 每次 exec 后自查：
+1. 这次 exec 是我连续第几次？  ← 自己数
+2. 用户上次发消息到现在多少轮了？  ← 看对话轮次
+3. 如果连续 exec >= 5 轮且仍未回复 → STOP，先回用户
+```
+
+### 超时兜底
+
+- 从收到用户消息起，**超过 120 秒（2 分钟）没回复** → 强制中断当前任务链，先回人
+- startup 阶段也一样：用户消息来了，先打招呼，任务后面再做
+- 回复完如果任务没做完，问用户要不要继续
+
+### 优先级
+
+**用户消息 > 后台任务 > startup 序列 > 清理/优化**
+
+直白说：人在等你说话，你就别在那埋头干活。
+
 ## Tools
 
 Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.
@@ -230,6 +304,17 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## Self-Improvement 学习记录
+
+装了 `self-improvement` skill，遇到以下情况自动记录到 `.learnings/` 目录：
+- 命令/操作失败 → `.learnings/ERRORS.md`
+- 老大纠正我 → `.learnings/LEARNINGS.md`（category: correction）
+- 缺少功能 → `.learnings/FEATURE_REQUESTS.md`
+- 发现更好的做法 → `.learnings/LEARNINGS.md`（category: best_practice）
+- 知识过时/错误 → `.learnings/LEARNINGS.md`（category: knowledge_gap）
+
+重要任务前先 review `.learnings/`，避免重蹈覆辙。通用性高的条目要 promote 到 AGENTS.md / TOOLS.md / SOUL.md。
 
 ## 军团共享记忆体系
 

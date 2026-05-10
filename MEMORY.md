@@ -29,6 +29,15 @@
 - 军团成员：满满(总管)、阿茶(PM Advisor)、小美(设计Advisor)、妙妙(HR/关怀)、小马(运维)
 - 检查点：[x] legion-charter 已读取/摘录、[x] 第一份 knowledge 已写入、[x] 有方式跟踪 hub 报告
 
+## 军团成员身份
+- 虾叔(保安)：OpenClaw，D:/OpenClaw，端口18789，模型tuyoo/glm-5.1
+- 满满(总管)：Hermes，D:/hermes，模型tuyoo-relay/gpt-5.5
+- 阿茶(PM Advisor)：Hermes，D:/hermes/acha
+- 小美(设计Advisor)：Hermes，D:/hermes/xiaomei
+- 妙妙(HR/关怀)：Hermes，D:/hermes/miaomiao，模型deepseek-v4-pro
+- 小马(运维)：GenericAgent，D:/GenericAgent，模型tuyoo-relay/glm-5.1，钉钉机器人dingpyoepw5vkoedesux
+- 当当：Hermes，D:/hermes/dangdang
+
 ## 重要事件
 - 2026-04-23：第一次上线，和老大在钉钉认识了
 - 2026-04-26：运维小马上线（OpenClaw2/D:/OpenClaw2/端口18790/deepseek-v4-flash），加入硅基军团
@@ -37,6 +46,8 @@
 - 2026-04-27：军团代码修改标记规范 §7.1 写入 legion-charter.md（Agent代号：Xia/Man/Cha/Mei/Miao/Ma）
 - 2026-04-27：修复群聊引用消息读取——钉钉 Stream API 将 isReplyMsg/repliedMsg 放在 text.extensions 里而非顶层，Hermes+OpenClaw 两端已改，妙妙+小马验证通过
 - 2026-04-28：写小马专用启动脚本 start_xiaoma.bat；PowerShell && 坑再次翻车被老大点名
+- 2026-05-02：评估 GenericAgent，clone 到 D:/GenericAgent，给小马换芯
+- 2026-05-03：小马从 OpenClaw2 切换为 GenericAgent（D:/GenericAgent）；妙妙模型切换为 deepseek-v4-pro；满满加 Tuyoo relay provider 并切为 gpt-5.5；旧 OpenClaw2(端口18790)停用待清理
 
 ## 钉钉引用消息结构（重要）
 - 群聊+私聊：isReplyMsg/repliedMsg 在 `text.extensions` 里，不在 `text` 顶层
@@ -47,5 +58,5 @@
 - 妙妙需重启才能用 DeepSeek
 - 妙妙 Hermes 已改代码支持 DeepSeek V4 thinking 模式，待切模型后验证
 - 小马 Windows 计划任务需管理员权限注册（开机自启）
-- 小马钉钉 Stream 约30秒 Disconnecting→reconnect 待查
-- 今晚 21:55 有一次性关机任务
+- 旧 OpenClaw2 进程（PID 23636，端口18790）需管理员权限杀掉
+- GenericAgent 单实例锁端口 TIME_WAIT 需注意（默认120秒）
