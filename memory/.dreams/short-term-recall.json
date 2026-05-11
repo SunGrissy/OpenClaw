@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-07T09:22:43.852Z",
+  "updatedAt": "2026-05-11T16:05:52.933Z",
   "entries": {
     "memory:memory/2026-04-25.md:21:38": {
       "key": "memory:memory/2026-04-25.md:21:38",
@@ -143,13 +143,13 @@
       "endLine": 19,
       "source": "memory",
       "snippet": "# 2026-04-27 大虾日记 ## 踩坑：钉钉群聊引用消息结构 - 坑：钉钉 Stream API 群聊引用消息的 isReplyMsg/repliedMsg 不在 text 顶层，藏在 text.extensions 里；私聊也一样 - 绕法：检查 text.extensions.isReplyMsg / text.extensions.repliedMsg 路径 - 记到：TOOLS.md ## 完成任务：群聊引用消息读取支持 - 问题：OpenClaw 和 Hermes Agent 在群聊里读不到用户引用的消息内容 - 根因：钉钉 Stream API 下发引用消息数据在 text.extensions 字段内，而非 text 顶层；两端代码都只检查了 text.isReplyMsg（顶层），遗漏了 extensions 路径 - 验证方法：在阿茶 gateway 加 AgentXia-QuoteDebug 调试日志，实测群聊+私聊引用消息 - 实测数据： - 群聊：conversationType=2, text.extensions.isReplyMsg=True, text.extensions.repliedMsg 含完整数据 - 私聊：conversationType=1, 结构完全一致，也在 text.extensions 里 - 修改范围： 1. D:\\hermes\\hermes-agent\\gateway\\platforms\\dingtalk.py - _extract_text 方法，提取 text.extensions 中的引用消",
-      "recallCount": 8,
+      "recallCount": 9,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 7.910138964879231,
+      "totalScore": 8.91013896487923,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T16:33:09.401Z",
-      "lastRecalledAt": "2026-05-06T12:43:39.445Z",
+      "lastRecalledAt": "2026-05-11T05:38:27.409Z",
       "queryHashes": [
         "f70fa216f082",
         "af3bba49c1fa",
@@ -158,14 +158,16 @@
         "a1c9beef0fe8",
         "2ca47982b2f2",
         "67aa3a92cb9f",
-        "3b60e8d97096"
+        "3b60e8d97096",
+        "28d1967151b5"
       ],
       "recallDays": [
         "2026-05-01",
         "2026-05-02",
         "2026-05-03",
         "2026-05-05",
-        "2026-05-06"
+        "2026-05-06",
+        "2026-05-11"
       ],
       "conceptTags": [
         "gateway",
@@ -185,26 +187,28 @@
       "endLine": 34,
       "source": "memory",
       "snippet": "- 另外注意：4个实例各有自己的 HERMES_HOME 目录，state 文件在各自的 HOME 下 ## 踩坑：满满 HERMES_HOME 从 D:\\hermes 改成 D:\\MyAgents 导致钉钉消息收不到 - 坑：满满切到 D:\\MyAgents 后，gateway 能启动、钉钉 Stream 能连、但 channel directory 只有0-1个 target，消息根本到不了 - 原因：D:\\MyAgents 下缺少完整的状态文件（sessions、channel_directory.json 等），新 gateway 启动后无法重建正确的消息路由 - 绕法：切回 D:\\hermes 作为 HERMES_HOME，3个 target 立即恢复 - 教训：HERMES_HOME 不要随便换目录，状态文件跟 HOME 强绑定，换了等于新机器人 ## Hermes 启动结果（最终） - 满满切回 D:\\hermes 才能正常收消息（D:\\MyAgents 下 channel directory 只有0-1个target，消息路由异常） - 阿茶 PID=28492 ✅ running + dingtalk connected - 小美 PID=25676 ✅ running + dingtalk connected - 妙妙 PID=1168 ✅ running + dingtalk connected ## Git 巡检偏好 - 行尾符差异（LF/CRLF 纯换行变更）自动 checkout 还原，不报告 - 只给分类结果（提交/保留/清理），不展示原",
-      "recallCount": 6,
+      "recallCount": 7,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 5.853160366679989,
+      "totalScore": 6.853160366679989,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T16:41:49.029Z",
-      "lastRecalledAt": "2026-05-07T09:22:43.852Z",
+      "lastRecalledAt": "2026-05-11T16:05:52.933Z",
       "queryHashes": [
         "5a119174153c",
         "b5512089eb89",
         "83458f238463",
         "a1c9beef0fe8",
         "62964dec9996",
-        "26a5e1be9aae"
+        "26a5e1be9aae",
+        "45d372e8d91d"
       ],
       "recallDays": [
         "2026-05-01",
         "2026-05-02",
         "2026-05-05",
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-12"
       ],
       "conceptTags": [
         "gateway",
@@ -224,21 +228,23 @@
       "endLine": 23,
       "source": "memory",
       "snippet": "# 2026-04-24 记忆 ## idleTimeoutSeconds 调整 - 老大觉得完全禁用不合理，改成 600（10分钟） - openclaw.json 已改，Gateway 需重启生效（SIGUSR1 失败，待老大手动重启或找其他方式） ## Gateway 启动 warnings 处理结论 - plugins.allow 为空：可加白名单 `[\"dingtalk-connector\"]`，老大说不用处理 - OpenRouter/LiteLLM 定价拉取超时：源码硬编码，无配置项可关，超时后自动跳过 - Bonjour 广播卡：Windows 上 Bonjour 直接 return []，不影响功能 - 结论：三个都不处理 ## Multica 路由 Bug 根因分析（21:53 开始） - **问题**：钉钉机器人同时配了 multica 和 Hermes，发\"派单\"时 multica 不接单、走到 Hermes - **根因**：Hermes Gateway 的 dotenv 加载顺序导致路由变量丢失 1. `load_hermes_dotenv` 先读 `HERMES_HOME/.env`（pm profile = `D:\\hermes\\pm\\.env`），override=True 2. `D:\\hermes\\pm\\.env` 存在 → 项目 `.env` 用 override=False 3. `D:\\hermes\\pm\\.env` 里没有 `HERMES_INBOUND_ROUTER_ENABLED` 和 `HERMES_ROUT",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T16:41:49.029Z",
-      "lastRecalledAt": "2026-05-06T12:43:39.445Z",
+      "lastRecalledAt": "2026-05-11T05:38:12.516Z",
       "queryHashes": [
         "5a119174153c",
         "b5512089eb89",
-        "3b60e8d97096"
+        "3b60e8d97096",
+        "22a044588caf"
       ],
       "recallDays": [
         "2026-05-01",
-        "2026-05-06"
+        "2026-05-06",
+        "2026-05-11"
       ],
       "conceptTags": [
         "gateway",
@@ -258,21 +264,23 @@
       "endLine": 17,
       "source": "memory",
       "snippet": "# 2026-04-26 记忆 ## 踩坑：Hermes 启动 UnicodeEncodeError - 坑：hermes gateway run 在 exec 环境下因 GBK 编码无法输出 emoji（❌ \\u274c），导致 `UnicodeEncodeError: 'gbk' codec can't encode character` 直接崩溃退出 - 绕法：启动时设 `PYTHONIOENCODING=utf-8` + `chcp 65001`，用 bat 脚本（不用 PowerShell `&` 连接，PS 会误解析） - 另一个坑：PowerShell exec 里 `&&` 和 `&` 都被当 PS 语法解析，嵌套引号也各种出错。bat 脚本写文件再 `cmd /c \"bat路径\"` 或 `start` 最稳 - 记到：TOOLS.md 已有 PowerShell 陷阱条目，补充编码问题 - 批量启动脚本：`D:\\OpenClaw\\scripts\\start_hermes.bat` - 单独重启满满：`D:\\OpenClaw\\scripts\\start_manman.bat` ## 踩坑：Hermes --replace 权限问题 - 坑：`--replace` 需要杀掉旧进程，但如果旧进程的 PID 文件残留且 taskkill 权限不够，会报 `Permission denied killing PID xxx. Cannot replace.` 然后退出 - 绕法：先手动 `taskkill /PID xxx /F` 杀旧进程，再删 `gateway_",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T16:41:49.029Z",
-      "lastRecalledAt": "2026-05-02T04:25:41.237Z",
+      "lastRecalledAt": "2026-05-11T16:05:52.933Z",
       "queryHashes": [
         "5a119174153c",
         "b5512089eb89",
-        "83458f238463"
+        "83458f238463",
+        "45d372e8d91d"
       ],
       "recallDays": [
         "2026-05-01",
-        "2026-05-02"
+        "2026-05-02",
+        "2026-05-12"
       ],
       "conceptTags": [
         "gateway",
@@ -292,27 +300,29 @@
       "endLine": 50,
       "source": "memory",
       "snippet": "- 行尾符差异（LF/CRLF 纯换行变更）自动 checkout 还原，不报告 - 只给分类结果（提交/保留/清理），不展示原始 diff ## Windows 计划任务巡检 - 本机 11 个自定义任务（不含 Microsoft/），7个启用、4个禁用 - ② EveningDigest_1800 已禁用（schtasks 成功） - ⑦ VersionDigest 无法通过 schtasks 禁用（权限不够），改为替换脚本为空壳，原脚本备份 .bak - 今晚 21:55 有一次性关机任务 OneTimeShutdown-20260426-2155 ## 运维小马上线 - 完全隔离的 OpenClaw2 实例，D:/OpenClaw2，端口 18790 - 模型：deepseek-v4-flash - 钉钉机器人：dingpyoepw5vkoedesux - dingtalk-connector 插件 0.8.19 有 import.meta 兼容问题，复用虾叔的 0.8.18 正常 - Gateway 已启动，钉钉 Stream 已连接 - 身份文件全部就位（SOUL/IDENTITY/AGENTS/USER/TOOLS/MEMORY.md） - 已加入硅基军团共享框架和共享记忆体系 - 军团成员更新：满满(总管)、阿茶(PM)、小美(设计)、妙妙(HR/关怀)、虾叔(保安)、小马(运维) - 待办：Windows 计划任务注册需管理员权限（开机自启）；钉钉 Stream 约30秒 Disconnecting→reconnect 待查 ## 小马模型切换：deep",
-      "recallCount": 6,
+      "recallCount": 7,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 5.915822331975132,
+      "totalScore": 6.915822331975132,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-02T04:25:41.237Z",
-      "lastRecalledAt": "2026-05-07T09:22:43.852Z",
+      "lastRecalledAt": "2026-05-11T16:05:52.933Z",
       "queryHashes": [
         "83458f238463",
         "fcae6d540f30",
         "a1c9beef0fe8",
         "3b60e8d97096",
         "62964dec9996",
-        "26a5e1be9aae"
+        "26a5e1be9aae",
+        "45d372e8d91d"
       ],
       "recallDays": [
         "2026-05-02",
         "2026-05-03",
         "2026-05-05",
         "2026-05-06",
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-12"
       ],
       "conceptTags": [
         "gateway",
@@ -367,24 +377,28 @@
       "endLine": 35,
       "source": "memory",
       "snippet": "2. D:\\OpenClaw\\extensions\\dingtalk-connector\\src\\core\\message-handler.ts - extractMessageContent 的 text/richText/reply 三个 case，同时检查 text.extensions 路径 - 回退方式：Hermes 用 git checkout；OpenClaw 用备份文件 message-handler.ts.bak.20260427 - 验证：妙妙(Hermes) + 小马(OpenClaw) 均已通过 - 清理：调试日志和 [AgentXia Task] 标记已全部删除 ## 规范沉淀：代码修改标记规范 §7.1 - 位置：D:/MyAgents/shared-memory/legion-charter.md §7.1 - 内容：任何 Agent 修改非自身工作区代码时，必须加 [Agent{代号} Task] 标记 - 代号：虾叔=Xia, 满满=Man, 阿茶=Cha, 小美=Mei, 妙妙=Miao, 小马=Ma - AGENTS.md 已加引用指向 §7.1 ## OpenClaw 流式体验优化调研 - 问题：老大反馈 OpenClaw 在钉钉里\"卡啊卡然后一大堆消息\"，工具调用期间完全静默 - 现状：dingtalk-connector 已有 AI Card 流式文字输出，但工具调用期间无进度提示 - 原生支持：OpenClaw tool-progress preview 只支持 Discord/Slack/Telegram/Mattermo",
-      "recallCount": 5,
+      "recallCount": 7,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 5,
+      "totalScore": 7,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-03T12:15:47.362Z",
-      "lastRecalledAt": "2026-05-07T09:22:43.852Z",
+      "lastRecalledAt": "2026-05-11T16:05:52.933Z",
       "queryHashes": [
         "fcae6d540f30",
         "5048b199cb74",
         "67aa3a92cb9f",
         "62964dec9996",
-        "26a5e1be9aae"
+        "26a5e1be9aae",
+        "28d1967151b5",
+        "45d372e8d91d"
       ],
       "recallDays": [
         "2026-05-03",
         "2026-05-06",
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-11",
+        "2026-05-12"
       ],
       "conceptTags": [
         "备份",
@@ -437,22 +451,24 @@
       "endLine": 25,
       "source": "memory",
       "snippet": "# 2026-05-02 大虾日记 ## 评估 GenericAgent - 老大发了 https://github.com/lsdefine/GenericAgent 让看值不值得装 - ~3K 行极简 Agent 框架，9个原子工具 + 100行 Agent Loop - 核心卖点：自我进化 Skill 树 + 真浏览器注入(保留登录态) + ADB 控制安卓 - 和 Hermes 对比：架构哲学完全不同（极简自举 vs 全功能平台） - GenericAgent 杀手锏：浏览器操控和手机 ADB，Hermes 没有这块 - 结论：能力互补，值得装来补浏览器/手机操控的短板 - 已 clone 到 D:\\GenericAgent ## 踩坑：搞错 Hermes 定位 - 坑：我一直把 Hermes 当成 OpenClaw 的钉钉消息插件/中间件，以为它只是传话的 - 实际：Hermes 是和 OpenClaw 直接竞争的**完整独立 Agent 框架** - 有自己的独立机器人、持久记忆系统、用户画像 - 40+ 工具 + MCP 扩展 + Skill Hub 公共市场 + agentskills.io 标准 - 子 Agent 调度、并行工作流、FTS5 会话搜索 - 多平台消息（Telegram/Discord/Slack/WhatsApp/Signal/钉钉） - 内置 cron 调度 - 甚至有 `hermes claw migrate` 从 OpenClaw 一键迁移 - 教训：别凭印象下结论，先看代码和 README ## Gene",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-03T12:19:13.563Z",
-      "lastRecalledAt": "2026-05-05T07:14:18.997Z",
+      "lastRecalledAt": "2026-05-11T05:38:27.409Z",
       "queryHashes": [
         "5048b199cb74",
         "9cd59806c92f",
-        "a1c9beef0fe8"
+        "a1c9beef0fe8",
+        "28d1967151b5"
       ],
       "recallDays": [
         "2026-05-03",
         "2026-05-04",
-        "2026-05-05"
+        "2026-05-05",
+        "2026-05-11"
       ],
       "conceptTags": [
         "github.com/lsdefine/genericagent",
@@ -600,18 +616,23 @@
       "endLine": 25,
       "source": "memory",
       "snippet": "- 需要老大去钉钉开放平台确认机器人 dingpyoepw5vkoedesux 的消息接收方式配置 ## 小马 GenericAgent 更新拉取 - git stash → git pull origin main → git stash pop，fast-forward 无冲突 - 20 个 commit 更新，关键：llmcore timeout/exception 修复、history folding、/resume 优化等 - 本地改动：sys_prompt.txt（自定义 system prompt）+ 3个 bat 启动脚本，均保留 - 小马已重启，钉钉 Stream 连接正常",
-      "recallCount": 1,
+      "recallCount": 5,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 5,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-06T12:43:39.445Z",
-      "lastRecalledAt": "2026-05-06T12:43:39.445Z",
+      "lastRecalledAt": "2026-05-11T05:38:12.516Z",
       "queryHashes": [
-        "3b60e8d97096"
+        "3b60e8d97096",
+        "5b9308766767",
+        "c8dac50e51f5",
+        "1120fee368a1",
+        "22a044588caf"
       ],
       "recallDays": [
-        "2026-05-06"
+        "2026-05-06",
+        "2026-05-11"
       ],
       "conceptTags": [
         "fast-forward",
@@ -631,19 +652,21 @@
       "endLine": 23,
       "source": "memory",
       "snippet": "# 2026-05-06 大虾日记 ## 任务：空闲重置 48 小时配置验证 - OpenClaw（我）：session.reset.idleMinutes=2880 ✅ - 满满：idle_minutes=2880 ✅ - 阿茶：idle_minutes=2880 ✅ - 小美：idle_minutes=2880 ✅ - 妙妙：idle_minutes=2880 ✅ - 当当：idle_minutes=1440（老大说不改） - 小马（GenericAgent）：没有 session reset 机制，不需要改 - 所有 Hermes 进程启动时间早于配置修改时间，需要重启才能生效（尚未重启 Hermes） ## 小马 DingTalk runtime not initialized 问题排查（持续） - 小马在钉钉反复报 \"抱歉，处理请求时出错: DingTalk runtime not initialized\" - GenericAgent 代码和 dingtalk-stream SDK 中没有这个字符串 - GLM-5.1 via Tuyoo relay 返回 content:null + reasoning 有内容 → llmcore.py 已修：从 reasoning 提取内容当 content fallback - 但杀掉小马进程后老大仍然收到同样报错 → 说明回复不是小马进程发出的 - **可能根因：钉钉机器人配了 HTTP 回调(outgoing webhook)，另一个服务在代答** - 需要老大去钉钉开放平台确认机器人 dingpyoepw5vkoed",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T09:22:43.843Z",
-      "lastRecalledAt": "2026-05-07T09:22:43.852Z",
+      "lastRecalledAt": "2026-05-11T16:05:52.933Z",
       "queryHashes": [
         "62964dec9996",
-        "26a5e1be9aae"
+        "26a5e1be9aae",
+        "45d372e8d91d"
       ],
       "recallDays": [
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-12"
       ],
       "conceptTags": [
         "session.reset.idleminutes",
