@@ -1,7 +1,8 @@
 # HEARTBEAT.md
 
 ## 定时任务
-- [ ] 每晚 22:30 git 巡检：检查 D:\MyAgents / D:\AgentsHub\MyAgents / D:\OpenClaw\workspace 的修改状态，有变更则整理分类报告老大
+- [x] 每晚 22:30 git 巡检：检查 D:\MyAgents / D:\AgentsHub\MyAgents / D:\OpenClaw\workspace 的修改状态，有变更则整理分类报告老大
+  - ✅ 2026-05-16 16:07 已完成
 - [x] 每30分钟 Hermes 进程巡检：检查满满/阿茶/小美/妙妙4个进程，异常通知老大
   - 脚本：D:\OpenClaw\scripts\hermes-healthcheck.ps1
   - cron job: hermes-healthcheck (49fe70b2-9c4d-43d3-9e24-cb9f8070a391)
