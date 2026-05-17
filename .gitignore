@@ -19,4 +19,12 @@ Desktop.ini
 # ========================
 # Logs
 # ========================
-*.lognul 
+*.lognul
+
+# ========================
+# Node / tmp
+# ========================
+node_modules/
+package-lock.json
+tmp/
+tmp_commit_push.bat 
