@@ -342,3 +342,4 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 - [ANCH-008] 路径必须来自记忆/搜索/用户指定，不猜路径
 - [ANCH-009] 代码修改后自测：语法检查→import测试→冒烟
 - [ANCH-010] 需求有歧义时并列2+种理解让老大选
+- [ANCH-011] cmd /c + 中文 + &&/|| 三连坑：Git类操作涉及含中文路径/消息/文件时，写 .py 脚本执行，不在 exec 里直接拼中文+符号。Python写 `.bat` 文件时也会编码崩（GBK吞字符），写 `.py` 最稳。

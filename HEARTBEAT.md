@@ -2,6 +2,7 @@
 
 ## 定时任务
 - [ ] 每晚 22:30 git 巡检：检查 D:\MyAgents / D:\AgentsHub\MyAgents / D:\OpenClaw\workspace 的修改状态，有变更则整理分类报告老大
+  - ⚠️ 注意事项：git 操作含中文路径/消息时，写 `.py` 脚本执行，禁止 exec 里直接 `cmd /c "git commit -m 中文"`（GBK编码吞字符必崩）。新锚点见 AGENTS.md ANCH-011。
 - [x] 每30分钟 Hermes 进程巡检：检查满满/阿茶/小美/妙妙4个进程，异常通知老大
   - 脚本：D:\OpenClaw\scripts\hermes-healthcheck.ps1
   - cron job: hermes-healthcheck (49fe70b2-9c4d-43d3-9e24-cb9f8070a391)
