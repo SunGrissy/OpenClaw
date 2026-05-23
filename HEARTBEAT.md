@@ -6,6 +6,10 @@
   - 脚本：D:\OpenClaw\scripts\hermes-healthcheck.ps1
   - cron job: hermes-healthcheck (49fe70b2-9c4d-43d3-9e24-cb9f8070a391)
   - 检查项：进程存活 + gateway_state + 钉钉连接状态
+- [ ] 每30分钟 小马进程巡检：检查 GenericAgent dingtalkapp.py 进程 + 端口19530，异常通知老大
+  - 脚本：待创建
+  - cron job：待创建
+  - 检查项：进程存活 + 端口占用 + 日志最新时间
 - [x] 工作日 21:30 日报生成：收集数据源生成初稿，确认后提交钉钉日志
   - SKILL：D:\OpenClaw\workspace\skills\daily-report\SKILL.md
   - 工作日判定脚本：D:\OpenClaw\scripts\is-workday.ps1（与 PM 系统一致，调休上班日也算）

@@ -58,5 +58,7 @@
 - 妙妙需重启才能用 DeepSeek
 - 妙妙 Hermes 已改代码支持 DeepSeek V4 thinking 模式，待切模型后验证
 - 小马 Windows 计划任务需管理员权限注册（开机自启）
-- 旧 OpenClaw2 进程（PID 23636，端口18790）需管理员权限杀掉
 - GenericAgent 单实例锁端口 TIME_WAIT 需注意（默认120秒）
+
+## 重要事件（续）
+- 2026-05-21：发现小马挂了9天（5/12 WebSocket超时断线未恢复）。重启后仍报"DingTalk runtime not initialized"——根因是旧 OpenClaw2 进程（PID 14556，端口18790）没杀掉，和新 GenericAgent 小马抢答。taskkill 后恢复正常。
