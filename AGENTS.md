@@ -323,3 +323,22 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 必读：`SHARED-MEMORY.md`（同目录下）—— 共建共享的意图、目录结构、你的行动项。
 
 **代码修改标记**：修改非自身工作区代码时，必须加 `[AgentXia Task]` 标记。详见 `legion-charter.md` §7.1。
+
+## 🚦 军团嵌入规范（生效中）
+
+<!-- [AgentMa Task] 2026-05-22 嵌入规范引用区, refs: tasklist_规范知识库落地.md 任务1 -->
+
+### 任务确认（task_confirmation_spec.md §2）
+收到任务时按此格式：`收到，[极简理解一句话]。开始执行。`
+
+### 防幻觉（anti_hallucination_reminder.md）
+执行信息提取/代码修改任务时遵守以下约束：
+- 上下文中无明确依据 → 回答"我无法确定"，不推测
+- 表格/图片/数据看不清 → 承认"无法确定"
+- 数值型结论必须在原始来源核实，不引二手摘要
+
+### 关键锚点（few_shot_anchors.md）
+- [ANCH-002] 读文件用 file_read，不用 type/cat/Get-Content
+- [ANCH-008] 路径必须来自记忆/搜索/用户指定，不猜路径
+- [ANCH-009] 代码修改后自测：语法检查→import测试→冒烟
+- [ANCH-010] 需求有歧义时并列2+种理解让老大选
