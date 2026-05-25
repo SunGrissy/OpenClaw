@@ -11,7 +11,7 @@
   - 脚本：待创建
   - cron job：待创建
   - 检查项：进程存活 + 端口占用 + 日志最新时间
-- [x] 工作日 21:30 日报生成：收集数据源生成初稿，确认后提交钉钉日志
+- [ ] 工作日 21:30 日报生成：收集数据源生成初稿，确认后提交钉钉日志
   - SKILL：D:\OpenClaw\workspace\skills\daily-report\SKILL.md
   - 工作日判定脚本：D:\OpenClaw\scripts\is-workday.ps1（与 PM 系统一致，调休上班日也算）
   - cron job: daily-report (3482b998-596d-41cc-9363-0b3ef22ceaba)
