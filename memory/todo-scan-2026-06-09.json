@@ -1,0 +1,30 @@
+{
+  "date": "2026-06-09",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 1
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msgxwQaMHSoXeKL1MfdgEgG8A==",
+      "openConversationId": "cidjoX6k+yY3JfqjJN/iQM0tA==",
+      "conversationTitle": "😈PMO 根据地",
+      "senderNick": "屈丽茹",
+      "senderStaffId": "DHxAiie7RLhkZz4gHXtwHa0PG0iS1KoqNXV",
+      "content": "@孙懿 我咋记得我说葫芦娃太多了，看看双龙要不要让下，没松口呢[捂脸哭]",
+      "createdAt": "2026-06-09 15:25:26",
+      "source": "mention",
+      "priority": "medium",
+      "category": "reply",
+      "reason": "用户被@提及，内容涉及对之前决策（葫芦娃太多、双龙是否让出）的回忆和确认，需要用户回应或澄清。",
+      "status": "reminded",
+      "reminder_count": 1,
+      "last_reminder_time": "2026-06-09T19:00:01+08:00",
+      "extracted_at": "2026-06-09T17:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}
