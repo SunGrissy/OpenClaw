@@ -1,0 +1,30 @@
+{
+  "date": "2026-06-11",
+  "summary": {
+    "done_count": 1,
+    "pending_count": 0
+  },
+  "done": [
+    {
+      "openMessageId": "msgNOPL6yW2sPEUC1gvhzfAEQ==",
+      "openConversationId": "cideBAnZ5z1adZeoEukXrGJ2A==",
+      "conversationTitle": "Boss大玩咖",
+      "senderNick": "赵宇驰",
+      "senderStaffId": "DHxAiie7RLhkZ3v1RknW7ZsfiPzDWco5iSJ5",
+      "content": "@孙懿 那蛤蟆精原来的玩法呢",
+      "createdAt": "2026-06-10 20:39:09",
+      "source": "mention",
+      "priority": "medium",
+      "category": "reply",
+      "reason": "用户被@，且来自星标联系人，询问关于‘蛤蟆精原来的玩法’，需要用户回复说明。",
+      "status": "done",
+      "reminder_count": 3,
+      "last_reminder_time": "2026-06-11T19:00:01+08:00",
+      "extracted_at": "2026-06-11T10:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "pending": [],
+  "skipped_mentions": []
+}

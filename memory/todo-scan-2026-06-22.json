@@ -1,0 +1,49 @@
+{
+  "date": "2026-06-22",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 2
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msgZ7+0sIUpglP2h6m0J1ihgA==",
+      "openConversationId": "cidxQDomRz8ouxkevgKatNiSw==",
+      "conversationTitle": "UE4-公众号礼包码使用接入",
+      "senderNick": "方清燕",
+      "senderStaffId": "DHxAiie7RLhkYghjjbdzcyBN3Z5W5GVv12",
+      "content": "@孙懿 猫姐 我们现在在做php下线，涉及到对咱们影响主要是捕鱼的公众号的一些功能。目前我了解到主要是兑换码功能，这块看看不能给我们qa提供一个兑换码，我们测试一下有无问题。[图片]",
+      "createdAt": "2026-06-22 11:23:43",
+      "source": "mention",
+      "priority": "high",
+      "category": "reply",
+      "reason": "方清燕明确请求用户提供一个兑换码给QA测试，属于需要用户回复或提供资源的请求",
+      "status": "reminded",
+      "reminder_count": 2,
+      "last_reminder_time": "2026-06-22T19:00:02+08:00",
+      "extracted_at": "2026-06-22T14:00:02+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    },
+    {
+      "openMessageId": "msgDgbc8YcQ7c81Ty87B3o9Fg==",
+      "openConversationId": "cidKRiSXk446nkJb75ldVG8jA==",
+      "conversationTitle": "🐱建博汇报直通车",
+      "senderNick": "Noil",
+      "senderStaffId": "DHxAiie7RLhkahtbx0WPiPHwRYJTwChIENE",
+      "content": "[图片]@孙懿 猫姐看下 联动 Boss 专属的倍率突破解锁活动 -迭代[图片]这两个做了4个挑战任务和六个的排版对比[图片]弹窗是这样的点击跳转逻辑",
+      "createdAt": "2026-06-22 11:00:24",
+      "source": "mention",
+      "priority": "high",
+      "category": "review",
+      "reason": "被@提及，发送者请求查看两个排版对比和弹窗跳转逻辑，需要用户确认或给出意见",
+      "status": "reminded",
+      "reminder_count": 2,
+      "last_reminder_time": "2026-06-22T19:00:02+08:00",
+      "extracted_at": "2026-06-22T14:00:02+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}

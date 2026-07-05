@@ -1,0 +1,30 @@
+{
+  "date": "2026-06-15",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 1
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msgzHRMNyKxgGMy4TN12pS5wg==",
+      "openConversationId": "cid0oYZ8vs7zrnUBz5TcmpREw==",
+      "conversationTitle": "技术小分队TEAM",
+      "senderNick": "张梦君",
+      "senderStaffId": "DHxAiie7RLhkajsPziPwVrKUuhs1fBj19nG",
+      "content": "端午值班人员统计，请大家今天下班前完成填写~~",
+      "createdAt": "2026-06-15 10:10",
+      "source": "focused",
+      "priority": "high",
+      "category": "confirm",
+      "reason": "用户被@，要求填写端午值班统计，有明确截止时间（今天下班前），属于需要用户确认并完成的请求",
+      "status": "reminded",
+      "reminder_count": 1,
+      "last_reminder_time": "2026-06-15T19:00:01+08:00",
+      "extracted_at": "2026-06-15T17:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}

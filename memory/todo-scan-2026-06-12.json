@@ -1,0 +1,49 @@
+{
+  "date": "2026-06-12",
+  "summary": {
+    "done_count": 2,
+    "pending_count": 0
+  },
+  "done": [
+    {
+      "openMessageId": "msgesWLduUeN9ZjtDOrmyimcg==",
+      "openConversationId": "cid7VuCXBYBH8PAZ9/6VwUD5Q==",
+      "conversationTitle": "UE4狙击队",
+      "senderNick": "王哲",
+      "senderStaffId": "DHxAiie7RLhka4H5yiP8hNl7xbnAdMxtwPd",
+      "content": "[图片]@孙懿 猫姐有想法做两个奔波儿灞和霸波尔奔做两个小妖好玩BOSS不，",
+      "createdAt": "2026-06-12 10:15:49",
+      "source": "mention",
+      "priority": "medium",
+      "category": "reply",
+      "reason": "王哲在群聊中@了用户，并提出了一个关于制作两个小妖BOSS的想法，需要用户（孙懿）回应或给出意见。",
+      "status": "done",
+      "reminder_count": 2,
+      "last_reminder_time": "2026-06-12T19:00:01+08:00",
+      "extracted_at": "2026-06-12T14:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    },
+    {
+      "openMessageId": "msgRZAbOFCaMQdA2ffqzx1n6g==",
+      "openConversationId": "cidkRiPxqcUHS0+sTfHRPJtAw==",
+      "conversationTitle": "数值小分队",
+      "senderNick": "刘洋",
+      "senderStaffId": "DHxAiie7RLhkbqVKviPMbyG9EdgbTRUOiPXZ",
+      "content": "@孙懿 我们改下",
+      "createdAt": "2026-06-12 07:11:41",
+      "source": "mention",
+      "priority": "high",
+      "category": "reply",
+      "reason": "用户被@，且消息明确要求一起修改，需要用户回应或参与协作",
+      "status": "done",
+      "reminder_count": 2,
+      "last_reminder_time": "2026-06-12T19:00:01+08:00",
+      "extracted_at": "2026-06-12T14:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "pending": [],
+  "skipped_mentions": []
+}

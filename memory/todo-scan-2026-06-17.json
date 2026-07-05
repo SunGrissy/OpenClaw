@@ -1,0 +1,30 @@
+{
+  "date": "2026-06-17",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 1
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msgv3aD9lM1GbueBbj3g5OOow==",
+      "openConversationId": "cidZ0s4kVungGic4RM+dGR0IA==",
+      "conversationTitle": "鱼油交流群",
+      "senderNick": "李慧心",
+      "senderStaffId": "DHxAiie7RLhkaO6qyHArgmDHpKQI52BJiSE",
+      "content": "@孙懿 猫姐还记得捕获这个boss之前打死或者巡游的boss是什么吗",
+      "createdAt": "2026-06-17 14:27:54",
+      "source": "mention",
+      "priority": "high",
+      "category": "reply",
+      "reason": "用户被@并直接询问一个具体问题（是否记得某个boss的情况），需要用户回复信息。",
+      "status": "reminded",
+      "reminder_count": 1,
+      "last_reminder_time": "2026-06-17T19:00:01+08:00",
+      "extracted_at": "2026-06-17T17:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}

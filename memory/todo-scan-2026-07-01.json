@@ -1,0 +1,68 @@
+{
+  "date": "2026-07-01",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 3
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msgP/fbUlZhdpqGoBhoRvzrwg==",
+      "openConversationId": "cidU2ZfsVoTW+0M5aSPKVfUEw==",
+      "conversationTitle": "UX大本营｜体验大师班",
+      "senderNick": "龚锦",
+      "senderStaffId": "DHxAiie7RLhkaKKf5OU5Pn9oyTnsl3RIc4",
+      "content": "@孙懿 猫姐，辛苦再看看[图片]",
+      "createdAt": "2026-07-01 15:53:09",
+      "source": "mention",
+      "priority": "high",
+      "category": "review",
+      "reason": "用户被@，发送者请求‘辛苦再看看’，并附有图片，明确要求用户进行查看/审阅",
+      "status": "reminded",
+      "reminder_count": 1,
+      "last_reminder_time": "2026-07-01T19:00:02+08:00",
+      "extracted_at": "2026-07-01T17:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    },
+    {
+      "openMessageId": "msgmSc1vFAmA4NVlFRcJ+K4vg==",
+      "openConversationId": "cidU2ZfsVoTW+0M5aSPKVfUEw==",
+      "conversationTitle": "UX大本营｜体验大师班",
+      "senderNick": "龚锦",
+      "senderStaffId": "DHxAiie7RLhkaKKf5OU5Pn9oyTnsl3RIc4",
+      "content": "@孙懿 猫姐，辛苦看看这样的修改可以不： 1. 称号下面的解释文本，改成：第2名至第3名可获得XXX（称号名称用图片字来表示，增加细节），文本如果去掉之后，在左边的排版会显得有点空，所以想保留，再给文本加一个UI底，补充UI细节。 2. 日常排位期间，入口处显示段位数字，因为要进入强者联赛需要达到7或12，是玩家的追求目标；进入强者联赛后，玩家不需要关注段位了，所以这个时候，入口改成强者联赛的标识",
+      "createdAt": "2026-07-01 15:09:42",
+      "source": "mention",
+      "priority": "high",
+      "category": "review",
+      "reason": "龚锦在群聊中@用户，请求用户‘辛苦看看’修改方案是否可行，属于明确的review请求。",
+      "status": "reminded",
+      "reminder_count": 1,
+      "last_reminder_time": "2026-07-01T19:00:02+08:00",
+      "extracted_at": "2026-07-01T17:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    },
+    {
+      "openMessageId": "msgb0223IuTfp6183P5T0aynA==",
+      "openConversationId": "cidKRiSXk446nkJb75ldVG8jA==",
+      "conversationTitle": "🐱建博汇报直通车",
+      "senderNick": "Noil",
+      "senderStaffId": "DHxAiie7RLhkahtbx0WPiPHwRYJTwChIENE",
+      "content": "[图片][图片]@孙懿 猫姐有空看下奇缘商铺的UE， 1.重点强化首位礼包可抵扣，最低抵扣到免费； 2.积分抵扣规则目前改成点击显示，过xx秒隐藏，每日首次进入显示，上次大话游玩中，其实规则很快就都搞懂了，但是规则一直显示，让界面比较拥挤，主要解决这个问题 3.抵扣的这个想加一个打蛇精，蛇精求饶降价的包装[图片]任务这块和繁哲对了下，目前是这个结构 日周的每日任务都是5个，周任务7组，挑战类型暂定",
+      "createdAt": "2026-07-01 15:53:00",
+      "source": "mention",
+      "priority": "high",
+      "category": "review",
+      "reason": "Noil @了用户，明确请求用户查看奇缘商铺的UE，并提出了具体的修改要求（如抵扣规则、积分规则、包装设计等），需要用户进行审阅和确认。",
+      "status": "reminded",
+      "reminder_count": 1,
+      "last_reminder_time": "2026-07-01T19:00:02+08:00",
+      "extracted_at": "2026-07-01T17:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}

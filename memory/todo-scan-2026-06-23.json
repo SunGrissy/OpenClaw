@@ -1,0 +1,30 @@
+{
+  "date": "2026-06-23",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 1
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msgzOghkuTYXMdrvqugzTUafQ==",
+      "openConversationId": "cideBAnZ5z1adZeoEukXrGJ2A==",
+      "conversationTitle": "Boss大玩咖",
+      "senderNick": "张颖",
+      "senderStaffId": "DHxAiie7RLhkYrJXkfiPMwuUhHUEDrzpNmiP",
+      "content": "@孙懿 猫姐，葫芦藤的满级天幕后面有讨论过要不要全屏吗~因为钢哥那边说如果全屏改成小天幕，就算元素可以复用排版也得重新做，所以想让我们在确定一下",
+      "createdAt": "2026-06-22 18:02:01",
+      "source": "mention",
+      "priority": "high",
+      "category": "confirm",
+      "reason": "张颖在群聊中@孙懿，明确要求确认葫芦藤满级天幕是否要全屏，这是一个需要用户给出明确答复的请求。",
+      "status": "reminded",
+      "reminder_count": 3,
+      "last_reminder_time": "2026-06-23T19:00:02+08:00",
+      "extracted_at": "2026-06-23T10:00:02+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}

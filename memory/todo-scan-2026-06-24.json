@@ -1,0 +1,49 @@
+{
+  "date": "2026-06-24",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 2
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msgNSlw3M1IO8VRButUIwWXjQ==",
+      "openConversationId": "cidkRiPxqcUHS0+sTfHRPJtAw==",
+      "conversationTitle": "数值小分队",
+      "senderNick": "孔繁哲",
+      "senderStaffId": "DHxAiie7RLhkYWhYrRLzH2S2mmldwc9eGO",
+      "content": "@孙懿 0625-队列修改同步，猫姐麻烦看一下哪里需要调整 1. 新增黄金迷城/小秘境/大秘境主BOSS队列黄金圣殿42%，财神队列（包括大小秘境）小乔42%，粽子娃降为22% 2. 黄金迷城房间机甲BOSS权重提升，4只机甲BOSS加总由5%提升至20% 3. 爆裂光刃和锯蟹在技能鱼队列，权重由30%降低到15% 4. 绝杀令BOSS维持在50%",
+      "createdAt": "2026-06-24 09:53:57",
+      "source": "mention",
+      "priority": "high",
+      "category": "review",
+      "reason": "用户被@，且消息明确请求‘猫姐麻烦看一下哪里需要调整’，属于需要用户review的请求",
+      "status": "reminded",
+      "reminder_count": 3,
+      "last_reminder_time": "2026-06-24T19:00:02+08:00",
+      "extracted_at": "2026-06-24T10:00:02+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    },
+    {
+      "openMessageId": "msg1iOgO7DZSHNwBXHn1vSYVQ==",
+      "openConversationId": "cidU2ZfsVoTW+0M5aSPKVfUEw==",
+      "conversationTitle": "UX大本营｜体验大师班",
+      "senderNick": "龚锦",
+      "senderStaffId": "DHxAiie7RLhkaKKf5OU5Pn9oyTnsl3RIc4",
+      "content": "@孙懿 猫姐，辛苦看看锦标赛的优化： 1. 入口图标当前段位； 2. 升段动画优化至关闭战报弹窗后播放； 3. 入口气泡的文本颜色有修改",
+      "createdAt": "2026-06-23 17:19:44",
+      "source": "mention",
+      "priority": "high",
+      "category": "review",
+      "reason": "龚锦在群聊中@用户，明确请求‘辛苦看看锦标赛的优化’，并列出三项具体优化点，需要用户进行审查或处理。",
+      "status": "reminded",
+      "reminder_count": 3,
+      "last_reminder_time": "2026-06-24T19:00:02+08:00",
+      "extracted_at": "2026-06-24T10:00:02+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}

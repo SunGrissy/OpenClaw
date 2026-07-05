@@ -1,0 +1,30 @@
+{
+  "date": "2026-06-13",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 1
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msg7Ge3N+dlofGB7u4k/eBiCA==",
+      "openConversationId": "cidKRiSXk446nkJb75ldVG8jA==",
+      "conversationTitle": "🐱建博汇报直通车",
+      "senderNick": "Noil",
+      "senderStaffId": "DHxAiie7RLhkahtbx0WPiPHwRYJTwChIENE",
+      "content": "[图片]@孙懿 有时间可以对一下",
+      "createdAt": "2026-06-12 18:02:48",
+      "source": "mention",
+      "priority": "high",
+      "category": "confirm",
+      "reason": "用户被@，且消息明确要求用户‘有时间可以对一下’，这是一个需要用户确认或核对的动作。",
+      "status": "reminded",
+      "reminder_count": 3,
+      "last_reminder_time": "2026-06-13T19:00:01+08:00",
+      "extracted_at": "2026-06-13T10:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}

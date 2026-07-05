@@ -1,0 +1,49 @@
+{
+  "date": "2026-07-02",
+  "summary": {
+    "done_count": 0,
+    "pending_count": 2
+  },
+  "done": [],
+  "pending": [
+    {
+      "openMessageId": "msg5THP9FKPSYBhvwJO0sm+/w==",
+      "openConversationId": "cidWPkNndb73f6O+899A5YIZg==",
+      "conversationTitle": "IOS五图优化",
+      "senderNick": "雷菁艺",
+      "senderStaffId": "DHxAiie7RLhkbkFlNuPbZ5q5Mq0ctCQmkN",
+      "content": "更新了魔术师那页的截图，看一下最新的效果图~@孙懿 @崔正钦 @龚锦",
+      "createdAt": "2026-07-02 15:07:57",
+      "source": "mention",
+      "priority": "high",
+      "category": "review",
+      "reason": "用户被@并要求查看最新的效果图，属于明确的审阅请求",
+      "status": "reminded",
+      "reminder_count": 1,
+      "last_reminder_time": "2026-07-02T19:00:01+08:00",
+      "extracted_at": "2026-07-02T17:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    },
+    {
+      "openMessageId": "msgNyZv7ANslZugxyuodC5dxA==",
+      "openConversationId": "cidWPkNndb73f6O+899A5YIZg==",
+      "conversationTitle": "IOS五图优化",
+      "senderNick": "龚锦",
+      "senderStaffId": "DHxAiie7RLhkaKKf5OU5Pn9oyTnsl3RIc4",
+      "content": "@孙懿 猫姐辛苦看看重新截了第一代魔术师的图[鞠躬][图片]和我们现在线上的五图是屏幕截图相似[图片]",
+      "createdAt": "2026-07-02 14:55:52",
+      "source": "mention",
+      "priority": "high",
+      "category": "review",
+      "reason": "龚锦@用户请求查看重新截取的图片，并说明与线上五图相似，需要用户确认或给出意见",
+      "status": "reminded",
+      "reminder_count": 1,
+      "last_reminder_time": "2026-07-02T19:00:01+08:00",
+      "extracted_at": "2026-07-02T17:00:01+08:00",
+      "done_at": null,
+      "dismissed_at": null
+    }
+  ],
+  "skipped_mentions": []
+}
