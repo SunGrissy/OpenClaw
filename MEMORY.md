@@ -59,6 +59,17 @@
 - 妙妙 Hermes 已改代码支持 DeepSeek V4 thinking 模式，待切模型后验证
 - 小马 Windows 计划任务需管理员权限注册（开机自启）
 - GenericAgent 单实例锁端口 TIME_WAIT 需注意（默认120秒）
+- 钉钉 MCP key 被 Hermes mask 成 ***，需从钉钉开放平台重新获取
+- ToDo Scanner cron jobs 丢失，待重建（7条调度）
 
 ## 重要事件（续）
 - 2026-05-21：发现小马挂了9天（5/12 WebSocket超时断线未恢复）。重启后仍报"DingTalk runtime not initialized"——根因是旧 OpenClaw2 进程（PID 14556，端口18790）没杀掉，和新 GenericAgent 小马抢答。taskkill 后恢复正常。
+- 2026-07-02：Hermes 大升级 v0.18.0（跨6个正式版本，6060 commit）
+  - 解决4个合并冲突（run_agent.py/gateway/run.py/gateway/status.py/tools/environments/base.py）
+  - 修复 base.py 缩进bug（冲突解决遗留）
+  - 修复 session.py _is_path_unsafe 阻拦钉钉 base64 conversationId 中的 / 字符
+  - 重新应用 Tuyoo relay 定制（preserve_dots + relay.tuyoo.com）
+  - venv 重建（ensurepip + pip install -e .）
+  - 4实例全部重启成功，钉钉 connected
+  - ⚠️ 钉钉 MCP 服务（日历/文档/日志）连接失败：Hermes 运行时把 config.yaml 中 key=真实值 mask 成 key=***，钉钉服务端收到无效 key 报"参数不能为空"。需要从钉钉开放平台重新获取 MCP URL。
+  - ⚠️ ToDo Scanner cron jobs 丢失（gateway 重启后），待重建

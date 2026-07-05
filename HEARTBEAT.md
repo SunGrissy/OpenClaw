@@ -14,7 +14,7 @@
 - [ ] 工作日 21:30 日报生成：收集数据源生成初稿，确认后提交钉钉日志
   - SKILL：D:\OpenClaw\workspace\skills\daily-report\SKILL.md
   - 工作日判定脚本：D:\OpenClaw\scripts\is-workday.ps1（与 PM 系统一致，调休上班日也算）
-  - cron job: daily-report (3482b998-596d-41cc-9363-0b3ef22ceaba)
+  - ⚠️ cron job 已丢失（6/25 gateway重启），需要重建
   - 数据源：shared-memory hub + 大虾 Memory + 钉钉日历 + Git巡检 + Hermes状态
   - 非工作日自动跳过
 

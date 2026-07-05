@@ -111,6 +111,13 @@ Get-Process | Where-Object { $_.Name -eq 'python' }
 6. 大小限制：image 10MB / voice 2MB / video+file 20MB
 7. 源码位置：`D:\OpenClaw\extensions\dingtalk-connector\dist\media-CJ4aUMke.mjs` + `runtime-D3BtNVHz.mjs`
 
+## GenericAgent (小马) 锁端口 ghost bind
+- 锁端口从19533改为39533（原19533被Windows内核ghost bind，bind失败但netstat不显示）
+- 修改文件：D:/GenericAgent/frontends/dingtalkapp.py 行147
+- 修改标记：[AgentXia Task]
+- 19533 ghost bind需要管理员权限排查（netsh excludedportrange）
+- **教训**：禁用ensure_single_instance锁机制会导致多进程雪崩（watchdog反复拉起），必须用锁端口但可以换端口号
+
 ---
 
 ## OpenClaw DeepSeek 插件 vs 自定义 Provider
@@ -121,6 +128,16 @@ Get-Process | Where-Object { $_.Name -eq 'python' }
 - 小马配置：`D:\OpenClaw2\openclaw.json`（deepseek 直连 + tuyoo relay 备用）
 - 小马启动脚本：`D:\OpenClaw2\start_gateway.bat`（含环境变量）
 - DeepSeek V4 正确参数：`reasoning: true`, `contextWindow: 1000000`, `maxTokens: 384000`
+
+---
+
+## 小马 GenericAgent 锁端口 ghost bind + 文件锁修复
+- 19533端口被Windows内核ghost bind（WinError 10013权限不足），netstat不显示，SO_REUSEADDR也失败
+- 不是TIME_WAIT（那是10048），是内核级占用，可能Hyper-V动态端口保留
+- **修复**：加了`ensure_single_instance_file()`文件锁函数到chatapp_common.py，dingtalkapp.py改用文件锁替代socket锁
+- 文件锁位置：`D:\GenericAgent\frontends\.instance.lock`（含PID，进程退出后自动检测旧进程是否存活）
+- ⚠️ start_dingtalk_daemon.bat有`:loop`循环，进程退出后5秒自动拉起 → 禁用锁机制会导致多进程雪崩
+- ⚠️ 19533 ghost bind需要管理员权限排查（netsh excludedportrange）
 
 ---
 
