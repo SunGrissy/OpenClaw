@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-03T15:38:24.281Z",
+  "updatedAt": "2026-06-20T04:40:56.686Z",
   "entries": {
     "memory:memory/2026-04-25.md:21:38": {
       "key": "memory:memory/2026-04-25.md:21:38",
@@ -46,25 +46,27 @@
       "endLine": 80,
       "source": "memory",
       "snippet": "- 注意：妙妙当前模型是 kimi-k2.6，此改动待妙妙切到 deepseek-v4-flash 时生效 ## 踩坑：DeepSeek V4 Flash thinking 模式兼容性问题 - 坑：DeepSeek V4 Flash 默认启用思考模式，多轮对话时 API 要求回传 `reasoning_content`（特别是有工具调用的轮次），不回传就返回 400 - OpenClaw 不适配：不发 `thinking: {\"type\": \"disabled\"}` 参数，也不回传 `reasoning_content` - Hermes 不适配：不给 DeepSeek 原生 API 发 `thinking` 或 `reasoning`（`_supports_reasoning_extra_body` 只对 OpenRouter 返回 True） - 绕法： 1. OpenClaw（小马）：换 kimi-k2.6，不涉及 thinking 模式 2. Hermes（妙妙）：改代码加 DeepSeek thinking 支持，`extra_body[\"thinking\"] = {\"type\": \"enabled/disabled\"}` - 记到：TOOLS.md / MEMORY.md ## 妙妙加 DeepSeek API - config.yaml 加了 deepseek provider（deepseek-v4-flash + deepseek-v4-pro） - .env 加了 DEEPSEEK_API_KEY=sk-779d6a0ab4a44cb0bac",
-      "recallCount": 5,
+      "recallCount": 6,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 4.992417720216037,
+      "totalScore": 5.992417720216037,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T16:33:09.401Z",
-      "lastRecalledAt": "2026-05-21T00:15:09.625Z",
+      "lastRecalledAt": "2026-06-15T11:29:55.728Z",
       "queryHashes": [
         "f70fa216f082",
         "af3bba49c1fa",
         "fcae6d540f30",
         "3b60e8d97096",
-        "a20f4acef57c"
+        "a20f4acef57c",
+        "32811d4bd2b6"
       ],
       "recallDays": [
         "2026-05-01",
         "2026-05-03",
         "2026-05-06",
-        "2026-05-21"
+        "2026-05-21",
+        "2026-06-15"
       ],
       "conceptTags": [
         "router",
@@ -84,19 +86,21 @@
       "endLine": 89,
       "source": "memory",
       "snippet": "- 需重启妙妙才生效 ## 共享规则：列表必须编号 - 老大要求所有列表/多条目输出必须编号（①②③…），方便直接说编号 - 已写入 shared-memory/knowledge/xiaxia-2026-04-26.md 作为军团共享规则 ## 踩坑：OpenClaw DeepSeek 插件 vs 自定义 Provider - 坑：OpenClaw 内置 DeepSeek 插件需要 `DEEPSEEK_API_KEY` 环境变量才能注册模型，光写 `plugins.entries.deepseek.enabled: true` 不够，模型还是报 \"Unknown model\" - 坑2：插件 schema 不支持 `apiKey` 和 `env` 字段，不能在 plugins.entries.deepseek 里直接传 key - 坑3：`openclaw onboard --auth-choice deepseek-api-key` 虽然写了配置，但 gateway port 被改回默认18789，deepseek 插件又被设为 enabled:false - 坑4：`.env` 文件放在 `$OPENCLAW_STATE_DIR/.env` 不一定被读（可能读 `~/.openclaw/.env`） - 绕法（最终成功）：用自定义 `models.providers.deepseek` 直连 API，`models.mode: \"replace\"` 替代内置 catalog，禁用插件避免冲突 - 直接在 provider 里写 apiKey，不依赖环境变量和插件",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T16:33:09.401Z",
-      "lastRecalledAt": "2026-04-30T16:33:09.405Z",
+      "lastRecalledAt": "2026-06-15T11:29:55.728Z",
       "queryHashes": [
         "f70fa216f082",
-        "af3bba49c1fa"
+        "af3bba49c1fa",
+        "32811d4bd2b6"
       ],
       "recallDays": [
-        "2026-05-01"
+        "2026-05-01",
+        "2026-06-15"
       ],
       "conceptTags": [
         "gateway",
@@ -246,26 +250,28 @@
       "endLine": 23,
       "source": "memory",
       "snippet": "# 2026-04-24 记忆 ## idleTimeoutSeconds 调整 - 老大觉得完全禁用不合理，改成 600（10分钟） - openclaw.json 已改，Gateway 需重启生效（SIGUSR1 失败，待老大手动重启或找其他方式） ## Gateway 启动 warnings 处理结论 - plugins.allow 为空：可加白名单 `[\"dingtalk-connector\"]`，老大说不用处理 - OpenRouter/LiteLLM 定价拉取超时：源码硬编码，无配置项可关，超时后自动跳过 - Bonjour 广播卡：Windows 上 Bonjour 直接 return []，不影响功能 - 结论：三个都不处理 ## Multica 路由 Bug 根因分析（21:53 开始） - **问题**：钉钉机器人同时配了 multica 和 Hermes，发\"派单\"时 multica 不接单、走到 Hermes - **根因**：Hermes Gateway 的 dotenv 加载顺序导致路由变量丢失 1. `load_hermes_dotenv` 先读 `HERMES_HOME/.env`（pm profile = `D:\\hermes\\pm\\.env`），override=True 2. `D:\\hermes\\pm\\.env` 存在 → 项目 `.env` 用 override=False 3. `D:\\hermes\\pm\\.env` 里没有 `HERMES_INBOUND_ROUTER_ENABLED` 和 `HERMES_ROUT",
-      "recallCount": 6,
+      "recallCount": 7,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 6,
+      "totalScore": 7,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T16:41:49.029Z",
-      "lastRecalledAt": "2026-05-21T00:15:24.840Z",
+      "lastRecalledAt": "2026-06-19T09:08:46.858Z",
       "queryHashes": [
         "5a119174153c",
         "b5512089eb89",
         "3b60e8d97096",
         "22a044588caf",
         "a20f4acef57c",
-        "6691b08207d5"
+        "6691b08207d5",
+        "c46ba87ab730"
       ],
       "recallDays": [
         "2026-05-01",
         "2026-05-06",
         "2026-05-11",
-        "2026-05-21"
+        "2026-05-21",
+        "2026-06-19"
       ],
       "conceptTags": [
         "gateway",
@@ -321,13 +327,13 @@
       "endLine": 50,
       "source": "memory",
       "snippet": "- 行尾符差异（LF/CRLF 纯换行变更）自动 checkout 还原，不报告 - 只给分类结果（提交/保留/清理），不展示原始 diff ## Windows 计划任务巡检 - 本机 11 个自定义任务（不含 Microsoft/），7个启用、4个禁用 - ② EveningDigest_1800 已禁用（schtasks 成功） - ⑦ VersionDigest 无法通过 schtasks 禁用（权限不够），改为替换脚本为空壳，原脚本备份 .bak - 今晚 21:55 有一次性关机任务 OneTimeShutdown-20260426-2155 ## 运维小马上线 - 完全隔离的 OpenClaw2 实例，D:/OpenClaw2，端口 18790 - 模型：deepseek-v4-flash - 钉钉机器人：dingpyoepw5vkoedesux - dingtalk-connector 插件 0.8.19 有 import.meta 兼容问题，复用虾叔的 0.8.18 正常 - Gateway 已启动，钉钉 Stream 已连接 - 身份文件全部就位（SOUL/IDENTITY/AGENTS/USER/TOOLS/MEMORY.md） - 已加入硅基军团共享框架和共享记忆体系 - 军团成员更新：满满(总管)、阿茶(PM)、小美(设计)、妙妙(HR/关怀)、虾叔(保安)、小马(运维) - 待办：Windows 计划任务注册需管理员权限（开机自启）；钉钉 Stream 约30秒 Disconnecting→reconnect 待查 ## 小马模型切换：deep",
-      "recallCount": 8,
+      "recallCount": 10,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 7.915822331975132,
+      "totalScore": 9.915822331975132,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-02T04:25:41.237Z",
-      "lastRecalledAt": "2026-06-03T15:38:24.281Z",
+      "lastRecalledAt": "2026-06-16T08:25:16.540Z",
       "queryHashes": [
         "83458f238463",
         "fcae6d540f30",
@@ -336,7 +342,9 @@
         "62964dec9996",
         "26a5e1be9aae",
         "45d372e8d91d",
-        "07945fd143a4"
+        "07945fd143a4",
+        "32811d4bd2b6",
+        "5d47f4f31f94"
       ],
       "recallDays": [
         "2026-05-02",
@@ -345,7 +353,9 @@
         "2026-05-06",
         "2026-05-07",
         "2026-05-12",
-        "2026-06-03"
+        "2026-06-03",
+        "2026-06-15",
+        "2026-06-16"
       ],
       "conceptTags": [
         "gateway",
@@ -535,23 +545,27 @@
       "endLine": 63,
       "source": "memory",
       "snippet": "- 待办：Windows 计划任务注册需管理员权限（开机自启）；钉钉 Stream 约30秒 Disconnecting→reconnect 待查 ## 小马模型切换：deepseek-v4-flash → kimi-k2.6 - 原因：DeepSeek V4 Flash 默认开启 thinking 模式，OpenClaw 不支持 `thinking: {\"type\": \"disabled\"}` 参数 - 报错：`LLM request failed: provider rejected the request schema or tool payload` - 根因：DeepSeek V4 返回 `reasoning_content`，OpenClaw 下轮不回传此字段 → 400 - OpenClaw 代码分析： - `reasoning: false` 配置只控制 `reasoning_effort` 参数，不发 `thinking` 参数 - `supportsReasoningEffort: true` 的 compat 标记反而让 OpenClaw 尝试发 `reasoning_effort`，但 DeepSeek 要的是 `thinking` - 消息回传逻辑没有保留 `reasoning_content` 字段 - 解决：小马换 moonshot/kimi-k2.6（Kimi 不默认开 thinking） - 妙妙 Hermes 也改了代码：在 run_agent.py 加了 DeepSeek thinking 模式支持（类似 Kimi 的",
-      "recallCount": 4,
+      "recallCount": 6,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 4,
+      "totalScore": 6,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-03T12:19:13.563Z",
-      "lastRecalledAt": "2026-05-22T02:31:32.558Z",
+      "lastRecalledAt": "2026-06-16T08:25:16.540Z",
       "queryHashes": [
         "5048b199cb74",
         "3b60e8d97096",
         "388ef4e8e677",
-        "db8a78abab15"
+        "db8a78abab15",
+        "32811d4bd2b6",
+        "5d47f4f31f94"
       ],
       "recallDays": [
         "2026-05-03",
         "2026-05-06",
-        "2026-05-22"
+        "2026-05-22",
+        "2026-06-15",
+        "2026-06-16"
       ],
       "conceptTags": [
         "deepseek-v4-flash",
@@ -643,18 +657,20 @@
       "endLine": 26,
       "source": "memory",
       "snippet": "# 2026-04-25 工作记录 ## 身份变更 - 老大给我定了新身份：**保安虾叔**，退休老教授转行当保安，扫地僧风格 - 更新了 IDENTITY.md / SOUL.md / MEMORY.md - 称呼关系：我喊她老大，她喊我大叔 ## Hermes 硅基军团排查与启动 - 老大说\"Hermes 没干活\"，查进程发现没跑，用 quick_start.bat 启动了全部服务 - 查了 Hermes 主 profile 配置：kimi-k2.6 模型，concise 人格，SOUL.md 全是技术铁律没角色身份 - Hermes 子 profile 有 pm/hr/design 三个，SOUL.md 都是默认模板 ## 总管满满 = Director 新名字 - 老大确认\"总管满满\"是 Director 的新名字 - 当前 quick_start.bat 启动的是主 profile（HERMES_HOME=D:\\hermes），不是 Director 专用 - 主 profile 需要正名为总管满满（SOUL.md 待改） ## 小美（设计 Advisor）上线 - 代码和 .env 都有，凭证验证有效（errcode:0） - 首次启动 401 鉴权失败 → 环境变量覆盖 .env 的经典坑 - 写了 start_clean.bat（清除 DINGTALK_CLIENT_ID 等环境变量后再启动） - 8302 端口被旧进程占 → taskkill 后重启成功 - 最终 stream_connected: True，可以 @小美 对话 - 小美目前是硬编码模",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-05T23:07:17.182Z",
-      "lastRecalledAt": "2026-05-05T23:07:17.182Z",
+      "lastRecalledAt": "2026-06-15T11:29:55.728Z",
       "queryHashes": [
-        "6ea83b452277"
+        "6ea83b452277",
+        "32811d4bd2b6"
       ],
       "recallDays": [
-        "2026-05-06"
+        "2026-05-06",
+        "2026-06-15"
       ],
       "conceptTags": [
         "identity.md",
@@ -757,19 +773,21 @@
       "endLine": 25,
       "source": "memory",
       "snippet": "# 2026-05-03 大虾日记 ## 模型切换 - 妙妙：deepseek-v4-flash → deepseek-v4-pro（D:/hermes/miaomiao/config.yaml） - 满满：加 Tuyoo relay provider（deepseek-v4-pro/flash, claude-sonnet-4.6, claude-opus-4.6, glm-5.1, gpt-5.5），模型从 kimi-k2.6 切为 gpt-5.5（D:/hermes/config.yaml） ## 小马换芯：OpenClaw2 → GenericAgent - 小马从 OpenClaw2（D:/OpenClaw2，端口18790）切换为 GenericAgent（D:/GenericAgent） - GenericAgent 是极简 Agent 框架（~3K行），9个原子工具+100行Agent Loop - 小马配置：mykey.py 里 Tuyoo relay glm-5.1，钉钉机器人 dingpyoepw5vkoedesux - 启动脚本：D:/GenericAgent/start_dingtalk.bat - 单实例锁端口 19530，TIME_WAIT 期间用 19531 绕过启动（已改回 19530） - 小马日志：D:/GenericAgent/temp/dingtalkapp.log ## 踩坑：GenericAgent 单实例锁 TIME_WAIT - 坑：小马进程挂了后，socket 锁端口 19530 进入 TIME_WAIT 状态，Wind",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-22T02:31:11.656Z",
-      "lastRecalledAt": "2026-05-22T02:31:32.558Z",
+      "lastRecalledAt": "2026-06-15T11:29:55.728Z",
       "queryHashes": [
         "388ef4e8e677",
-        "db8a78abab15"
+        "db8a78abab15",
+        "32811d4bd2b6"
       ],
       "recallDays": [
-        "2026-05-22"
+        "2026-05-22",
+        "2026-06-15"
       ],
       "conceptTags": [
         "gpt",
@@ -813,6 +831,99 @@
         "旧进程/旧实例的清理是定时炸弹",
         "5/6",
         "日记"
+      ]
+    },
+    "memory:memory/2026-05-25.md:1:11": {
+      "key": "memory:memory/2026-05-25.md:1:11",
+      "path": "memory/2026-05-25.md",
+      "startLine": 1,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "# 2026-05-25 每日记忆 ## 昨夜/今晨 - 日期：周一，工作日 - 安静时段 23:00-08:00 无打扰 ## 待办 - [ ] 早晨检查当天 memory/2026-05-25.md - [ ] 21:30 日报（工作日晚9点半 cron 触发） - [ ] 22:30 git 巡检",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-16T08:25:16.540Z",
+      "lastRecalledAt": "2026-06-16T08:25:16.540Z",
+      "queryHashes": [
+        "5d47f4f31f94"
+      ],
+      "recallDays": [
+        "2026-06-16"
+      ],
+      "conceptTags": [
+        "昨夜/今晨",
+        "00-08",
+        "memory/2026-05-25.md",
+        "每日",
+        "记忆",
+        "昨夜",
+        "今晨",
+        "日期"
+      ]
+    },
+    "memory:memory/2026-06-04.md:1:25": {
+      "key": "memory:memory/2026-06-04.md:1:25",
+      "path": "memory/2026-06-04.md",
+      "startLine": 1,
+      "endLine": 25,
+      "source": "memory",
+      "snippet": "# 2026-06-04 大虾日记 ## 新能力：待办扫描器（todo-scanner） - 接到老大需求：定时扫钉钉消息，提取待办，追踪处理，日报联动 - Claude Code 写初稿后被杀，我手动修复完 - 一期能力：群聊@消息+标星联系人消息→LLM提取待办→检测回复→提醒→日报 ### 技术要点 - 位置：`D:\\MyAgents\\todo-scanner\\`（从 OpenClaw 迁移到共享目录） - 三模式：scan（拉取+LLM提取）/ remind（检查+提醒）/ report（日报双写） - LLM：DeepSeek chat（直接从 openclaw.json 读 API key） - 已回复检测：`dws chat message list-by-sender --sender-user-id 0165313012750022` - 媒体消息清洗：`_clean_content()` 把 mediaId 替换为 `[图片]` - 群聊过滤：`_is_for_user()` 跳过 @别人的对话 ### 已注册 - legion-charter.md §8 共享能力索引 → todo-scanner 条目 - shared-memory/knowledge/xiaxia-2026-06-04.md → 满满hub - 7条 cron jobs（工作日运行） ### bash 避坑 - $符号在 cmd 的 `for /f` 里可以，但 Python 子进程读 stdout 要注意 GBK 编码 - 每次改代码后要检查编译：`py -c \"compil",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-16T08:25:16.540Z",
+      "lastRecalledAt": "2026-06-16T08:25:16.540Z",
+      "queryHashes": [
+        "5d47f4f31f94"
+      ],
+      "recallDays": [
+        "2026-06-16"
+      ],
+      "conceptTags": [
+        "todo-scanner",
+        "openclaw.json",
+        "list-by-sender",
+        "sender-user-id",
+        "clean-content",
+        "is-for-user",
+        "legion-charter.md",
+        "日记"
+      ]
+    },
+    "memory:memory/2026-06-19.md:1:17": {
+      "key": "memory:memory/2026-06-19.md:1:17",
+      "path": "memory/2026-06-19.md",
+      "startLine": 1,
+      "endLine": 17,
+      "source": "memory",
+      "snippet": "# 2026-06-19 每日记忆 ## 昨夜/今晨 - 日期：6月19日周五，工作日 - 安静时段 23:00-08:00 无打扰 ## PM 系统 JWT 提取 - 老大问 PM 系统生产环境地址 → 查出是 http://pmsystem-fishue4.tuyoo.com - 试了 CDP、Cookie 直读全撞墙（浏览器锁 profile、DPAPI 加密） - 小马写了方案教程（D:/GenericAgent/temp/chrome_jwt_extract_tutorial.md）：直读 Chrome LevelDB - 已实现并存档： - 工具：D:/MyAgents/tools/chrome-jwt-extract/extract.py - Skill：D:/MyAgents/skills/chrome-jwt-extract/SKILL.md - 注册到 legion-charter.md §8.2（共享能力索引） - 提取结果：Chrome Default 和 Edge Default 各有一个有效 JWT - Edge 的更新鲜（exp: 2026-06-25 20:34），推荐使用",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-20T04:40:56.686Z",
+      "lastRecalledAt": "2026-06-20T04:40:56.686Z",
+      "queryHashes": [
+        "2e008d04ff28"
+      ],
+      "recallDays": [
+        "2026-06-20"
+      ],
+      "conceptTags": [
+        "昨夜/今晨",
+        "00-08",
+        "pmsystem-fishue4.tuyoo.com",
+        "legion-charter.md",
+        "8.2",
+        "每日",
+        "记忆",
+        "昨夜"
       ]
     }
   }
