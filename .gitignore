@@ -27,4 +27,17 @@ Desktop.ini
 node_modules/
 package-lock.json
 tmp/
-tmp_commit_push.bat 
+tmp_commit_push.bat
+
+# ========================
+# OpenClaw state / temp
+# ========================
+openclaw-workspace-state.json
+state/
+data/
+temp/
+
+# ========================
+# Stale submodule pointer (not a real submodule)
+# ========================
+dingtalk-workspace-cli/ 
